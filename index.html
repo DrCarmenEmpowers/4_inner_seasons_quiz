@@ -1038,9 +1038,30 @@
     closeGuideModal.onclick = () => guideModal.classList.add('hidden');
     closeGuideModalBtn2.onclick = () => guideModal.classList.add('hidden');
 
-    downloadGuideBtn.onclick = () => triggerDigitalDownload();
+    downloadGuideBtn.onclick = () => triggerDirectPdfDownload();
     downloadPdfTrigger.onclick = () => triggerDigitalDownload();
 
+    //Function for PDF Download
+    /**
+ * Triggers the file download programmatically and displays the toast notification.
+ */
+function triggerDirectPdfDownload() {
+  const fileId = "1QrsNop6B_8nRP18qR2Uax8jAfXxFRTSz";
+  const directDownloadUrl = `https://drive.google.com/uc?export=download&id=${fileId}`;
+
+  const tempLink = document.createElement("a");
+  tempLink.href = directDownloadUrl;
+  tempLink.setAttribute("target", "_blank");
+  tempLink.setAttribute("download", "The 4 Inner Seasons Daily Implementation Guide.pdf");
+  
+  document.body.appendChild(tempLink);
+  tempLink.click();
+  document.body.removeChild(tempLink);
+
+  if (typeof showToast === "function") {
+    showToast("Your Implementation Chart has been downloaded! 📥");
+  }
+}    
     function triggerDigitalDownload() {
       const userName = quizState.userData.name || 'Friend';
       const archetype = quizState.calculatedArchetype ? archetypes[quizState.calculatedArchetype].title : 'Menstrual Self-Care';
@@ -1100,16 +1121,6 @@ Dr. Carmen
       downloadLink.click();
       document.body.removeChild(downloadLink);
       showToast("Your Implementation Chart has been downloaded! 📥");
-
-      //Download PDF from GDrive - https://drive.google.com/file/d/1QrsNop6B_8nRP18qR2Uax8jAfXxFRTSz/view?usp=sharing
-      //const fileId = "1QrsNop6B_8nRP18qR2Uax8jAfXxFRTSz";
-      //cont directDownloadUrl = 'https://drive.google.com/uc?export=downloadId=${fileId}';
-
-      //Assign to element
-      //const downloadLink = document.getElementById("downloadGuideBtn");
-      //downloadLink.href = directDownloadUrl;
-      //downloadLink.setAttribute("download", "The 4 Inner Seasons Daily Implementation Guide.pdf");
-      //showToast("Your Implementation Chart has been downloaded! 📥");
     }
     const form = document.getElementById('leadCaptureForm') || document.querySelector('form');
 
