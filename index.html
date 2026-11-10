@@ -568,6 +568,13 @@
             </div>
           </div>
 
+          //<div class="bg-amber-50 p-4 rounded-2xl border border-brand-gold/40 text-center space-y-2">
+            //<p class="text-xs font-semibold text-amber-900">Your personalized copy is ready to download.</p>
+            //<button id="downloadPdfTrigger" class="px-5 py-2.5 bg-brand-terracotta hover:bg-brand-terracottaLight text-white rounded-xl text-xs font-bold transition-all shadow">
+             // Save Chart as Offline File (.txt)
+            //</button>
+          //</div>
+
         </div>
 
         <div class="p-4 bg-brand-blush border-t border-brand-plum/10 text-right">
@@ -1045,7 +1052,7 @@ function triggerDirectPdfDownload() {
   const tempLink = document.createElement("a");
   tempLink.href = directDownloadUrl;
   tempLink.setAttribute("target", "_blank");
-  tempLink.setAttribute("download", "The 4 Inner Seasons Daily Implementation Guide");
+  tempLink.setAttribute("download", "The 4 Inner Seasons Daily Implementation Guide.pdf");
   
   document.body.appendChild(tempLink);
   tempLink.click();
