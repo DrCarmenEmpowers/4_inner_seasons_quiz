@@ -430,7 +430,7 @@
 
           <div class="pt-2 flex flex-wrap items-center gap-3">
             <button id="downloadGuideBtn" class="px-6 py-3.5 bg-brand-plum text-white rounded-xl font-bold text-xs hover:bg-brand-plumLight transition-all flex items-center gap-2 shadow-md">
-              <span>📥 Download Implementation Chart (.txt)</span>
+              <span>📥 Download Implementation Chart (.pdf)</span>
             </button>
             <button id="previewGuideBtn" class="px-5 py-3.5 bg-white border border-brand-plum/20 text-brand-plum rounded-xl font-semibold text-xs hover:bg-brand-blush transition-all">
               Preview Online
@@ -1092,13 +1092,23 @@ With warmth,
 Dr. Carmen
 ===================================================================`;
 
-      const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
-      const downloadLink = document.createElement('a');
-      downloadLink.href = URL.createObjectURL(blob);
-      downloadLink.download = `Dr_Carmen_Inner_Seasons_Chart_${userName.replace(/\s+/g, '_')}.txt`;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      document.body.removeChild(downloadLink);
+      //const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+      //const downloadLink = document.createElement('a');
+      //downloadLink.href = URL.createObjectURL(blob);
+      //downloadLink.download = `Dr_Carmen_Inner_Seasons_Chart_${userName.replace(/\s+/g, '_')}.txt`;
+      //document.body.appendChild(downloadLink);
+      //downloadLink.click();
+      //document.body.removeChild(downloadLink);
+      //showToast("Your Implementation Chart has been downloaded! 📥");
+
+      //Download PDF from GDrive - https://drive.google.com/file/d/1QrsNop6B_8nRP18qR2Uax8jAfXxFRTSz/view?usp=sharing
+      const fileId = "1QrsNop6B_8nRP18qR2Uax8jAfXxFRTSz";
+      cont directDownloadUrl = 'https://drive.google.com/uc?export=downloadId=${fileId}';
+
+      //Assign to element
+      const downloadLink = document.getElementById("downloadGuideBtn");
+      downloadLink.href = directDownloadUrl;
+      //downloadLink.setAttribute("download", "The 4 Inner Seasons Daily Implementation Guide.pdf");
       showToast("Your Implementation Chart has been downloaded! 📥");
     }
     const form = document.getElementById('leadCaptureForm') || document.querySelector('form');
